@@ -8,7 +8,8 @@ public class TheStack : MonoBehaviour {
 	private const float BOUNDS_SIZE = 3.5f;
 	private const float STACK_MOVING_SPEED = 5.0f;
 	private const float ERROR_MARGIN = 0.1f;
-
+	private const float STACK_BOUNDS_GAIN = 025f;
+	private const int COMBO_START_GAIN = 3;
 
 	private GameObject[] theStack;
 	private Vector2 stackBounds = new Vector2(BOUNDS_SIZE, BOUNDS_SIZE);
@@ -84,7 +85,7 @@ public class TheStack : MonoBehaviour {
 		lastTilePosition = theStack[stackIndex].transform.localPosition;
 		stackIndex--;
 		if(stackIndex < 0)
-			stackIndex = transform.childCount - 1;
+			stackIndex = transform.childCount - 1; 
 
 		desiredPosition = (Vector3.down) * scoreCount; 
 		theStack [stackIndex].transform.localPosition = new Vector3(0, scoreCount, 0);
@@ -94,11 +95,13 @@ public class TheStack : MonoBehaviour {
 
 	private bool PlaceTile()
 	{
-		
+		Transform t = theStack [stackIndex].transform;
 
-		if(isMovingOnX){
+		if(isMovingOnX)
+		{
 			float deltaX = lastTilePosition.x - t.position.x;
-			if (Mathf.Abs (deltaX) > ERROR_MARGIN){
+			if (Mathf.Abs (deltaX) > ERROR_MARGIN)
+			{
 				//CUT THE TILE
 				combo = 0;
 				stackBounds.x -= Mathf.Abs (deltaX);
@@ -108,9 +111,21 @@ public class TheStack : MonoBehaviour {
 				float middle =  lastTilePosition.x + t.localPosition.x / 2;
 				t.localScale = new Vector3(stackBounds.x, 1, stackBounds.y); // changing block size - cutting the block
 				t.localPosition = new Vector3(middle - (lastTilePosition.x / 2), scoreCount, lastTilePosition.z); // repositioning of cutted block
-
 			}
-		 		else{
+			 	else{
+				 	if (combo > COMBO_START_GAIN){
+				 		stackBounds.x += STACK_BOUNDS_GAIN;
+						float middle =  lastTilePosition.x + t.localPosition.x / 2;
+					t.localScale = new Vector3(stackBounds.x, 1, stackBounds.y);
+					t.localPosition = new Vector3(middle - (lastTilePosition.x / 2), scoreCount, lastTilePosition.z);
+				 	}
+
+
+			 	combo++;
+				t.localPosition = lastTilePosition + new Vector3 (lastTilePosition.x, scoreCount, lastTilePosition.z);
+			 	}
+		 	} else 
+		 	{
 
 				float deltaZ = lastTilePosition.z - t.position.z;
 			if (Mathf.Abs (deltaZ) > ERROR_MARGIN){
@@ -123,8 +138,20 @@ public class TheStack : MonoBehaviour {
 				float middle =  lastTilePosition.z + t.localPosition.z / 2;
 				t.localScale = new Vector3 (stackBounds.x, 1, stackBounds.y); // changing block size - cutting the block
 				t.localPosition = new Vector3 (lastTilePosition.x, scoreCount, middle - (lastTilePosition.z / 2)); // repositioning of cutted block
-			}
-		}
+			} else
+				{
+				if (combo > COMBO_START_GAIN){
+				 		stackBounds.y += STACK_BOUNDS_GAIN;
+						float middle =  lastTilePosition.z + t.localPosition.z / 2;
+					t.localScale = new Vector3(stackBounds.x, 1, stackBounds.y);
+					t.localPosition = new Vector3 (lastTilePosition.x, scoreCount, middle - (lastTilePosition.z / 2));
+				 	}
+
+
+			 	combo++;
+				t.localPosition = lastTilePosition + new Vector3 (lastTilePosition.x, scoreCount, lastTilePosition.z);
+			 	}
+		
 		}
 
 
