@@ -46,12 +46,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ParticleEffects.cs" />
      <Compile Include="Assets\scripts\GameManager.cs" />
      <Compile Include="Assets\scripts\GradientBackground.cs" />
      <Compile Include="Assets\scripts\MainMenu.cs" />
+     <Compile Include="Assets\scripts\MusicPlayer.cs" />
      <Compile Include="Assets\scripts\RemoveRubble.cs" />
      <Compile Include="Assets\scripts\TheStack.cs" />
      <None Include="Assets\Artwork\VertexColor.shader" />
+     <None Include="Assets\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>G:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

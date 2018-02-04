@@ -5,38 +5,46 @@ using UnityEngine.SceneManagement;
 
 public class TheStack : MonoBehaviour
 {
-	public Text scoreText;
-	public Color32[] gameColors;
-	public Material stackMat;
-	public GameObject endPanel;
-	public AudioClip[] clips;
+	public Text scoreText;												//Variable for score counting.
+	public Color32[] gameColors;										//Variable for colors for Tiles and background. Available in Unity Inspector.
+	public Material stackMat;											//Variable for material placement for gameObjects. Available in Unity Inspector.
+	public GameObject endPanel;											//Variable for ending panel. Available in Unity Inspector.
+	public AudioClip[] clips;											//Variable for music track. Available in Unity Inspector.
 
 	private const float BOUNDS_SIZE = 3.5f;
-	private const float STACK_MOVING_SPEED = 5.0f;
-	private const float ERROR_MARGIN = 0.25f;
-	private const float STACK_BOUNDS_GAIN = 0.25f;
-	private const int COMBO_START_GAIN = 3;
+	private const float STACK_MOVING_SPEED = 5.0f;						
+	private const float ERROR_MARGIN = 0.25f;							//Margin for succesful placing.
+	private const float STACK_BOUNDS_GAIN = 0.25f;						//How much Stack grow with succesful COMBO
+	private const int COMBO_START_GAIN = 3; 							//Number of succesfoul placements that grants boost | makes tiles bigger. 
 
 	private GameObject[] theStack;
 	private Vector2 stackBounds = new Vector2 (BOUNDS_SIZE, BOUNDS_SIZE);
 
-	private int stackIndex;
-	private int scoreCount = 0;
-	private int combo = 0;
-	private int lastColorIndex = 0;
-	private Color32 startColor;
-	private Color32 endColor;
+	private int stackIndex;												//Stack number for counting whitch next will appear.
+	private int scoreCount = 0;											//Variable for Score.
+	private int combo = 0;												//Variable for COMBO
+
+	private int lastColorIndex = 0;									//
+	private Color32 startColor;										// Variables for gameObjects color changes.
+	private Color32 endColor;										//
+	private float colorTransition = 0;								//
 
 	private float tileTransition = 0.0f;
-	private float tileSpeed = 2.5f;
+	private float tileSpeed = 2.5f;										//Game Speed - sets tile movement speed.
 	private float secondaryPosition;
-	private float colorTransition = 0;
+	
 
-	private bool isMovingOnX = true;
-	private bool gameOver = false;
+	private bool isMovingOnX = true;									//Variable for saving direction of tile movement.
+	private bool gameOver = false;										
 
 	private Vector3 desiredPosition;
 	private Vector3 lastTilePosition;
+
+	public GameObject Fire1;										//
+	public GameObject Fire2;										//
+	public GameObject ParticlesEffects;								//	Variables for Particle Effects.
+	public GameObject EndEffect;									//
+	public GameObject Splash;										//
 
 	private void Start () 
 	{
@@ -44,24 +52,25 @@ public class TheStack : MonoBehaviour
 		startColor = gameColors [0];
 		endColor = gameColors [1];
 		lastColorIndex = 1;
-		for (int i = 0; i < transform.childCount; i++) 
+		for (int i = 0; i < transform.childCount; i++) 							//loop for Tile counting and changes
 		{
 			theStack [i] = transform.GetChild (i).gameObject;
 			ColorMesh(theStack[i].GetComponent<MeshFilter>().mesh);
 		}
 
-		stackIndex = transform.childCount - 1;
+		stackIndex = transform.childCount - 1;									//Give as adequate count start from bottom in Array of Tiles.
 	}
 
+// CreateRubble makes cutted elements that fall to the catcher-GameObject that delete it for saving memory and CPU power.
 	private void CreateRubble(Vector3 pos,Vector3 scale)
 	{
 		GameObject go = GameObject.CreatePrimitive (PrimitiveType.Cube);
-		go.transform.localPosition = pos;
-		go.transform.localScale = scale;
-		go.AddComponent<Rigidbody> ();
+		go.transform.localPosition = pos;										//Set Rubble position.
+		go.transform.localScale = scale;										//Set Rubble cutted form.
+		go.AddComponent<Rigidbody> ();											//Give Rigidbody for physics | that's why they falling.
 
-		go.GetComponent<MeshRenderer> ().material = stackMat;
-		ColorMesh(go.GetComponent<MeshFilter> ().mesh);
+		go.GetComponent<MeshRenderer> ().material = stackMat;					//Give material for rubble.
+		ColorMesh(go.GetComponent<MeshFilter> ().mesh); 						//Get color from last tile.
 	}
 
 	private void Update ()
@@ -69,13 +78,15 @@ public class TheStack : MonoBehaviour
 		if (gameOver)
 			return;
 
-		if (Input.GetMouseButtonDown (0))
+		if (Input.GetMouseButtonDown (0))										//Loop for events of click or touch.
 		{
 			if (PlaceTile ()) 
 			{
+				
 				SpawnTile ();
 				scoreCount++;
-				scoreText.text = scoreCount.ToString ();
+				scoreText.text = scoreCount.ToString ();						//change int to string for Score show.
+				EffectsTiming();												//Start time for effects 
 			}
 			else
 			{
@@ -84,10 +95,63 @@ public class TheStack : MonoBehaviour
 		}
 
 		MoveTile ();
-
-		// Move the stack
-		transform.position = Vector3.Lerp(transform.position,desiredPosition,STACK_MOVING_SPEED * Time.deltaTime);
+		transform.position = Vector3.Lerp(transform.position,desiredPosition,STACK_MOVING_SPEED * Time.deltaTime); 		//Stack movement
 	}
+
+	// Start time for effects 
+	private void EffectsTiming()
+	{
+		if (scoreCount == 35){
+				EffectsParticle ();
+				}
+		if (scoreCount == 10){
+			EffectsSplash ();
+				} 
+		else if (scoreCount == 20)
+				{
+			EffectsSplash ();
+				}
+		else if (scoreCount == 40)
+				{
+			EffectsSplash ();
+				}
+		else if (scoreCount == 50)
+				{
+			EffectsSplash ();
+				}
+		else if (scoreCount == 60)
+				{
+			EffectsSplash ();
+				}
+		else if (scoreCount == 80)
+				{
+			EffectsSplash ();
+				}
+		else if (scoreCount == 90)
+				{
+			EffectsSplash ();
+				}
+		else if (scoreCount == 100)
+				{
+			EffectsSplash ();
+				}
+
+	}
+
+
+	// Fire Particle effects Instantiate.
+	private void EffectsParticle()
+	{
+				Instantiate(Fire1, ParticlesEffects.transform);
+				Instantiate(Fire2, ParticlesEffects.transform);
+	}
+	// Splash Particle effects Instantiate.
+	private void EffectsSplash()
+	{
+				Instantiate(Splash, ParticlesEffects.transform);
+	}
+
+
 
 	private void MoveTile()
 	{
@@ -242,6 +306,7 @@ public class TheStack : MonoBehaviour
 		if (PlayerPrefs.GetInt ("score") < scoreCount)
 			PlayerPrefs.SetInt ("score", scoreCount);
 		gameOver = true;
+		Instantiate(EndEffect, ParticlesEffects.transform);
 		endPanel.SetActive (true);
 		theStack [stackIndex].AddComponent<Rigidbody> ();
 
