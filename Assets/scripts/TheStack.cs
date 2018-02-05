@@ -101,41 +101,9 @@ public class TheStack : MonoBehaviour
 	// Start time for effects 
 	private void EffectsTiming()
 	{
-		if (scoreCount == 35){
+		if (scoreCount == 25){
 				EffectsParticle ();
 				}
-		if (scoreCount == 10){
-			EffectsSplash ();
-				} 
-		else if (scoreCount == 20)
-				{
-			EffectsSplash ();
-				}
-		else if (scoreCount == 40)
-				{
-			EffectsSplash ();
-				}
-		else if (scoreCount == 50)
-				{
-			EffectsSplash ();
-				}
-		else if (scoreCount == 60)
-				{
-			EffectsSplash ();
-				}
-		else if (scoreCount == 80)
-				{
-			EffectsSplash ();
-				}
-		else if (scoreCount == 90)
-				{
-			EffectsSplash ();
-				}
-		else if (scoreCount == 100)
-				{
-			EffectsSplash ();
-				}
-
 	}
 
 
@@ -260,7 +228,7 @@ public class TheStack : MonoBehaviour
 				{
 					if (stackBounds.y > BOUNDS_SIZE)
 						stackBounds.y = BOUNDS_SIZE;
-					
+					Instantiate(Splash, ParticlesEffects.transform);
 					stackBounds.y += STACK_BOUNDS_GAIN;
 					float middle = lastTilePosition.z + t.localPosition.z / 2;
 					t.localScale = new Vector3 (stackBounds.x, 1, stackBounds.y);
