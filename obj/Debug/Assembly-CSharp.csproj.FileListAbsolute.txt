@@ -29,3 +29,34 @@ G:\This PC\Documents\repos\Unity\DarkWoods\Stack\Temp\bin\Debug\UnityEngine.Holo
 G:\This PC\Documents\repos\Unity\DarkWoods\Stack\Temp\bin\Debug\UnityEngine.VR.xml
 G:\This PC\Documents\repos\Unity\DarkWoods\Stack\obj\Debug\Assembly-CSharp.dll
 G:\This PC\Documents\repos\Unity\DarkWoods\Stack\obj\Debug\Assembly-CSharp.pdb
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\Assembly-CSharp.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\Assembly-CSharp.pdb
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\nunit.framework.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEditor.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.Analytics.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.HoloLens.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.Networking.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.TestRunner.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.UI.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.VR.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\Mono.Cecil.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\Unity.SerializationLogic.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\Unity.DataContract.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\Unity.UNetWeaver.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\Unity.CecilTools.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.xml
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEditor.xml
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.UI.xml
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.Networking.xml
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.TestRunner.xml
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\nunit.framework.xml
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.Analytics.xml
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.HoloLens.xml
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\Temp\bin\Debug\UnityEngine.VR.xml
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\obj\Debug\Assembly-CSharp.dll
+G:\This PC\Documents\repos\Unity\DarkWoods\Stack Game\obj\Debug\Assembly-CSharp.pdb

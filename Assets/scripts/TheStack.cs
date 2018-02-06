@@ -30,7 +30,7 @@ public class TheStack : MonoBehaviour
 	private float colorTransition = 0;								//
 
 	private float tileTransition = 0.0f;
-	private float tileSpeed = 2.5f;										//Game Speed - sets tile movement speed.
+	private float tileSpeed = 3.0f;										//Game Speed - sets tile movement speed.
 	private float secondaryPosition;
 	
 
@@ -87,6 +87,7 @@ public class TheStack : MonoBehaviour
 				scoreCount++;
 				scoreText.text = scoreCount.ToString ();						//change int to string for Score show.
 				EffectsTiming();												//Start time for effects 
+				SpeedChange();													//Tile speed change in progress of game.
 			}
 			else
 			{
@@ -105,6 +106,28 @@ public class TheStack : MonoBehaviour
 				EffectsParticle ();
 				}
 	}
+
+	//Tile speed change in progress of game.
+	private void SpeedChange()
+	{
+		if (scoreCount == 35){
+			tileSpeed = 3.5f;
+				}
+
+		if (scoreCount == 50){
+			tileSpeed = 4.0f;
+				}
+
+		if (scoreCount == 60){
+			tileSpeed = 3.5f;
+				}
+
+		if (scoreCount >= 80){
+			tileSpeed = Random.Range(3.0f, 5.0f);
+				}
+	}
+
+
 
 
 	// Fire Particle effects Instantiate.
